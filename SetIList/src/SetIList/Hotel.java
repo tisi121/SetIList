@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package SetIList;
-
+import java.util.Set;
+import java.util.TreeSet;
 /**
  *
  * @author thejo
  */
-public class Hotel {
+public class Hotel implements Comparable<Hotel>{
     //Constants
     
     //Atributs
@@ -53,7 +54,15 @@ public class Hotel {
         return preu;
     }
 
-    
+    @Override
+    public int compareTo(Hotel o) {
+        return Integer.compare(this.preu, o.preu);
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" + "idHotel=" + idHotel + ", zona=" + zona + ", preu=" + preu + '}';
+    }
     
     
 }
