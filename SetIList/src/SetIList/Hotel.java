@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package SetIList;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 /**
@@ -16,9 +17,11 @@ public class Hotel implements Comparable<Hotel>{
     private int idHotel;
     private ZONES zona;
     private int preu;
+    private static int qt=0;
 
     public Hotel(ZONES zona, int preu) {
-        this.idHotel = idHotel;
+        qt++;
+        this.idHotel = qt;
         this.zona = zona;
         this.preu = preu;
     }
@@ -63,6 +66,30 @@ public class Hotel implements Comparable<Hotel>{
     public String toString() {
         return "Hotel{" + "idHotel=" + idHotel + ", zona=" + zona + ", preu=" + preu + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.zona);
+        hash = 89 * hash + this.preu;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hotel other = (Hotel) obj;
+        return this.idHotel == other.idHotel;
+    }
+    
     
     
 }
